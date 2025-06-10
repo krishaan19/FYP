@@ -1,0 +1,35 @@
+Solver command line: ['/usr/local/bin/gurobi.sh']
+
+Set parameter Username
+Set parameter LicenseID to value 2599058
+
+--------------------------------------------
+Warning: your license will expire in 1 days
+--------------------------------------------
+
+Read LP format model from file /var/folders/rn/vfsp966x5270n7qfmb6gfpkw0000gn/T/tmpptnpufol.pyomo.lp
+Reading time = 0.00 seconds
+x1: 36 rows, 24 columns, 59 nonzeros
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (mac64[rosetta2] - Darwin 24.4.0 24E263)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 36 rows, 24 columns and 59 nonzeros
+Model fingerprint: 0x5bca5b9a
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [5e-01, 2e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 5e+02]
+Presolve removed 28 rows and 6 columns
+Presolve time: 0.00s
+Presolved: 8 rows, 18 columns, 25 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.8050000e+03   1.281250e+02   0.000000e+00      0s
+       7    1.0850000e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 7 iterations and 0.01 seconds (0.00 work units)
+Optimal objective  1.085000000e+03
+

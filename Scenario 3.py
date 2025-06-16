@@ -317,21 +317,22 @@ model.ev_min_soc = pyo.Constraint(model.T, rule=lambda m, t: m.SoC_EV[t] >= ev_m
 # Solver configuration
 solver = pyo.SolverFactory('gurobi')
 
-pareto_cost = []      # Stores total cost for each beta
-pareto_emissions = []  # Stores emissions for each beta
-beta_values = np.linspace(0, 1, 21)  # From 0 (emissions only) to 1 (cost only)
 
-# Loop over beta values to generate Pareto front
+
+pareto_emissions = []
+pareto_cost = []
+beta_values = np.linspace(0, 1, 21)
+
 for b in beta_values:
     model.beta = b
     solver.solve(model, tee=False)
-
-    # Compute total cost and emissions for this run
-    cost = sum(hourly_prices[t] * pyo.value(model.P_conv[t]) for t in T)
-    emissions = sum(carbon_intensity_kg_per_mwh[t] * model.P_conv[t] for t in model.T)
-
+    
+    cost = sum(hourly_prices[t] * value(model.P_conv[t]) for t in model.T)
+    emissions = sum(carbon_intensity_kg_per_mwh[t] * value(model.P_conv[t]) for t in model.T)
+    
     pareto_cost.append(cost)
     pareto_emissions.append(emissions)
+
 
 # -------------------------------
 # === Solve Final Model with Selected Beta ===
